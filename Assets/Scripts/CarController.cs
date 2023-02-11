@@ -13,6 +13,11 @@ public class CarController : MonoBehaviour
             Move();    
             CheckInput();
         }
+
+        if(transform.position.y <= -2)
+        {
+            GameManager.instance.GameOver();
+        }
     }
     private void Move()
     {
@@ -27,7 +32,7 @@ public class CarController : MonoBehaviour
             firstInput = false;
             return;
         }
-        
+
         if(Input.GetMouseButtonDown(0))
         {
             ChangeDirection();

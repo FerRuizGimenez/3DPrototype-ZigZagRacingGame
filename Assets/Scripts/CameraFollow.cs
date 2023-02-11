@@ -15,7 +15,11 @@ public class CameraFollow : MonoBehaviour
 
     private void Update() 
     {
-        Follow();    
+        if(target.position.y >= 0)
+        {
+            Follow();  
+        }
+          
     }
 
     private void Follow()
