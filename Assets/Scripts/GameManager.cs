@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,5 +35,11 @@ public class GameManager : MonoBehaviour
     {
         //gameStarted = false;
         platformSpawner.SetActive(false);
+        Invoke("ReloadLevel", 1.0f);
+    }
+
+    private void ReloadLevel()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
