@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    public GameObject pickUpEffect;
     [SerializeField] float moveSpeed;
     bool movingLeft = true;
     bool firstInput = true;
@@ -50,5 +51,17 @@ public class CarController : MonoBehaviour
             movingLeft = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.gameObject.tag == "Diamond")
+        {
+            GameManager.instance.IncrementScore();
+
+            Instantiate(pickUpEffect, other.transform.position, pickUpEffect.transform.rotation);
+
+            other.gameObject.SetActive(false);
+        }    
     }
 }

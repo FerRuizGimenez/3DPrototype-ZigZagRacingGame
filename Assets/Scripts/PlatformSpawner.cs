@@ -29,7 +29,8 @@ public class PlatformSpawner : MonoBehaviour
         {
             GeneratePosition();
 
-            Instantiate(platformPrefab, newPos, Quaternion.identity);
+            GameObject platformInstance = Instantiate(platformPrefab, newPos, Quaternion.identity);
+            platformInstance.transform.SetParent(gameObject.transform);
 
             lastPosition = newPos;
 

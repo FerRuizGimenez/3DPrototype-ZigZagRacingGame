@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public GameObject menuUI;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI scoreTxt;
-
     AudioSource audioSource;
     public AudioClip[] gameMusic;
     int score = 0;
@@ -76,6 +75,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void IncrementScore()
+    {
+        score += 2;
+        scoreTxt.text = score.ToString();
+        audioSource.PlayOneShot(gameMusic[2], 0.2f);
+    }
     private void SaveHighScore()
     {
         if(PlayerPrefs.HasKey("HighScore")) 
