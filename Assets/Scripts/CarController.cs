@@ -14,7 +14,7 @@ public class CarController : MonoBehaviour
             CheckInput();
         }
 
-        if(transform.position.y <= -2)
+        if(transform.position.y <= -1.5f)
         {
             GameManager.instance.GameOver();
         }
