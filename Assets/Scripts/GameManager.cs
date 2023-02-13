@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public GameObject menuUI;
     public TextMeshProUGUI highScoreText;
     public TextMeshProUGUI scoreTxt;
+
+    AudioSource audioSource;
+    public AudioClip[] gameMusic;
     int score = 0;
     int highScore;
 
@@ -20,7 +23,9 @@ public class GameManager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-        }    
+        }   
+
+        audioSource = GetComponent<AudioSource>(); 
     }
     private void Start() 
     {
@@ -43,6 +48,8 @@ public class GameManager : MonoBehaviour
         platformSpawner.SetActive(true);
         menuUI.SetActive(false);
         gameplayUI.SetActive(true);
+        audioSource.clip = gameMusic[1];
+        audioSource.Play();
         StartCoroutine(UpdateScore());
     }
 
